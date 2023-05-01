@@ -1,0 +1,5 @@
+Para el juego final se pretende usar un sensor de ultrasonido el cual cumplira la funcion de servir como control para dar un efecto grabitatorio al sistema de fisicas que afectaran directamente al pernonaje principal.  la idea es que de acuerdo a la proximidad ejercida por el usuario, se tendra de igualforma el efecto grabitatorio sobre 
+nuestro personaje al momento de saltar, 
+
+Grabiti.
+el juego consiste en un astronauta que tiene que recorrer una pista sorteando obstaculos y evitando proyectiles, el astronauta tendra un control de grabedad para poder sortear los obstaculos pero tendra que tener cuidado, pues en el camino exixtiran objetos con un gran campo grabitacional que podrian hatraerlo y hacerlo girar hacia su orbita hasta eliminarlo. 
