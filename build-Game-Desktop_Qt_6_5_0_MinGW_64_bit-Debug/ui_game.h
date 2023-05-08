@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -24,6 +25,7 @@ class Ui_Game
 public:
     QWidget *centralwidget;
     QPushButton *pushButton;
+    QGraphicsView *graphicsView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -36,10 +38,13 @@ public:
         centralwidget->setObjectName("centralwidget");
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(780, 460, 321, 211));
+        pushButton->setGeometry(QRect(800, 800, 321, 211));
         pushButton->setStyleSheet(QString::fromUtf8("border-image: url(:/play.png);\n"
 "font: 700 italic 9pt \"Roman\";\n"
 "color: rgb(127, 42, 255);"));
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName("graphicsView");
+        graphicsView->setGeometry(QRect(0, 0, 1920, 790));
         Game->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Game);
         menubar->setObjectName("menubar");

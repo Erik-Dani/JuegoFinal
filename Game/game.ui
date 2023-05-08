@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>460</y>
+      <x>800</x>
+      <y>800</y>
       <width>321</width>
       <height>211</height>
      </rect>
@@ -30,6 +30,16 @@ color: rgb(127, 42, 255);</string>
     </property>
     <property name="text">
      <string>play</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1920</width>
+      <height>790</height>
+     </rect>
     </property>
    </widget>
   </widget>

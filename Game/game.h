@@ -9,9 +9,10 @@
 #include <QKeyEvent>
 #include <QMainWindow>
 #include <QGraphicsItem>
+#include <QGraphicsView>
 #include <QPainter>
+#include "nave.h"
 
-using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -25,6 +26,7 @@ class Game : public QMainWindow
 public:
     Game(QWidget *parent = nullptr);
     ~Game();
+    void ReboteDestruk();
 
 private slots:
     void on_pushButton_clicked();
@@ -33,6 +35,9 @@ private slots:
 private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
+    Nave *Destruk;
+    int NaveVel=0;
+
 };
 
 #endif // GAME_H
