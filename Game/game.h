@@ -26,17 +26,21 @@ class Game : public QMainWindow
 public:
     Game(QWidget *parent = nullptr);
     ~Game();
-    void ReboteDestruk();
+
 
 private slots:
     void on_pushButton_clicked();
     void CargarMundo();
-
+    void ReboteDestruk();
 private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
     Nave *Destruk;
     int NaveVel=0;
+
+    ////////////TIMERS///////////////
+
+    QTimer *TimeRot;
 
 };
 

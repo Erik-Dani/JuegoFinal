@@ -22,7 +22,7 @@ class Nave : public QObject, public QGraphicsPixmapItem
 
 public:
 
-    Nave(int , int );
+    void Movimiento(int , int );
 
     Nave(int , int , int );
 

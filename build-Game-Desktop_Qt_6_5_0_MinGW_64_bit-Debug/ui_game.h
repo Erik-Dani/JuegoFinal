@@ -33,7 +33,7 @@ public:
     {
         if (Game->objectName().isEmpty())
             Game->setObjectName("Game");
-        Game->resize(1920, 1080);
+        Game->resize(1920, 1020);
         centralwidget = new QWidget(Game);
         centralwidget->setObjectName("centralwidget");
         pushButton = new QPushButton(centralwidget);
@@ -44,7 +44,7 @@ public:
 "color: rgb(127, 42, 255);"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
-        graphicsView->setGeometry(QRect(0, 0, 1920, 790));
+        graphicsView->setGeometry(QRect(0, 0, 1920, 500));
         Game->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Game);
         menubar->setObjectName("menubar");

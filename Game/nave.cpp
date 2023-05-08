@@ -1,9 +1,12 @@
 
 #include "nave.h"
 
-Nave::Nave(int x, int y)
+
+void Nave::Movimiento(int x, int y)
 {
-    setPos(x, y);
+    this->posx=x;
+    this->posy=y;
+    setPos(posx, posy);
 }
 
 Nave::Nave(int x, int y, int r)
