@@ -9,6 +9,15 @@ void Nave::Movimiento(int x, int y)
     setPos(posx, posy);
 }
 
+Proyectil *Nave::Disparar()
+{
+    if(Misiles.size()<3){
+        Misiles.push_back(new Proyectil(posx,posy));
+        return Misiles.last();
+    }
+    return nullptr;
+}
+
 Nave::Nave(int x, int y, int r)
 {
     this->posx=x;

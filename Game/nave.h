@@ -9,6 +9,8 @@
 #include <QKeyEvent>
 #include <QGraphicsItem>
 #include <QPainter>
+#include <QVector>
+#include "proyectil.h"
 
 using namespace std;
 
@@ -20,11 +22,16 @@ class Nave : public QObject, public QGraphicsPixmapItem
     int radio;
     int velocidad;
 
+    QVector<Proyectil *> Misiles;
+
 public:
+
+    Nave(int , int , int );
 
     void Movimiento(int , int );
 
-    Nave(int , int , int );
+    Proyectil* Disparar(); //me retorna un puntero de la clase dispaprar
+
 
     QRectF boundingRect() const ;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,

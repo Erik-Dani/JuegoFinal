@@ -9,13 +9,17 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    gamebase.cpp \
     main.cpp \
     game.cpp \
-    nave.cpp
+    nave.cpp \
+    proyectil.cpp
 
 HEADERS += \
     game.h \
-    nave.h
+    gamebase.h \
+    nave.h \
+    proyectil.h
 
 FORMS += \
     game.ui

@@ -32,6 +32,8 @@ private slots:
     void on_pushButton_clicked();
     void CargarMundo();
     void ReboteDestruk();
+    void eliminarBoom();
+
 private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
@@ -41,6 +43,7 @@ private:
     ////////////TIMERS///////////////
 
     QTimer *TimeRot;
+    QTimer *TimeFire;
 
 };
 
