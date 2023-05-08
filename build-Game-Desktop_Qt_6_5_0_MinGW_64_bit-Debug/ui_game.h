@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -22,6 +23,7 @@ class Ui_Game
 {
 public:
     QWidget *centralwidget;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -29,12 +31,19 @@ public:
     {
         if (Game->objectName().isEmpty())
             Game->setObjectName("Game");
-        Game->resize(800, 600);
+        Game->resize(1920, 1080);
         centralwidget = new QWidget(Game);
         centralwidget->setObjectName("centralwidget");
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(780, 460, 321, 211));
+        pushButton->setStyleSheet(QString::fromUtf8("border-image: url(:/play.png);\n"
+"font: 700 italic 9pt \"Roman\";\n"
+"color: rgb(127, 42, 255);"));
         Game->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Game);
         menubar->setObjectName("menubar");
+        menubar->setGeometry(QRect(0, 0, 1920, 21));
         Game->setMenuBar(menubar);
         statusbar = new QStatusBar(Game);
         statusbar->setObjectName("statusbar");
@@ -48,6 +57,7 @@ public:
     void retranslateUi(QMainWindow *Game)
     {
         Game->setWindowTitle(QCoreApplication::translate("Game", "Game", nullptr));
+        pushButton->setText(QCoreApplication::translate("Game", "play", nullptr));
     } // retranslateUi
 
 };
