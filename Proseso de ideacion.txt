@@ -1,5 +1,4 @@
-Para el juego final se pretende usar un sensor de ultrasonido el cual cumplira la funcion de servir como control para dar un efecto grabitatorio al sistema de fisicas que afectaran directamente al pernonaje principal.  la idea es que de acuerdo a la proximidad ejercida por el usuario, se tendra de igualforma el efecto grabitatorio sobre 
-nuestro personaje al momento de saltar, 
+Puño Bomba Planeta.
 
-Grabiti.
-el juego consiste en un astronauta que tiene que recorrer una pista sorteando obstaculos y evitando proyectiles, el astronauta tendra un control de grabedad para poder sortear los obstaculos pero tendra que tener cuidado, pues en el camino exixtiran objetos con un gran campo grabitacional que podrian hatraerlo y hacerlo girar hacia su orbita hasta eliminarlo. 
+El juego consiste en bombas y misiles que van a venir del espacio, siendo atraidas por el campo grabitatorio del paneta Zork. La trayectoria de las bombas y los misiles 
+sera modificada por Puños de guantes de Box que modificaran la trayectoria de los proyectiles, si un proyectil colisiona mas de 2 veces, este explotara dejando un efecto de aturdimiento que va a dificultar el movimiento de el agujero negro el cual tiene como finalidad evitar la colision de las bombas con el planeta,
