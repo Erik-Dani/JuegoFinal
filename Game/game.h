@@ -1,18 +1,23 @@
-
+﻿
 #ifndef GAME_H
 #define GAME_H
 
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QTimer>
+#include <QVector>
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QMainWindow>
 #include <QGraphicsItem>
 #include <QGraphicsView>
 #include <QPainter>
+#include <ctime>
+#include <cstdlib>
+#include <iostream>
 #include "nave.h"
-
+#include "proyectil.h"
+#include "portal.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -22,28 +27,49 @@ class Game : public QMainWindow
 
 {
     Q_OBJECT
+    bool K1=true;
+    bool K2=false;
+    float Point1=0;
 
 public:
     Game(QWidget *parent = nullptr);
     ~Game();
 
+    int getBomba() const;
+    void setBomba(int newBomba);
+    void CargarBomba(int);
+    void NumRand();
 
 private slots:
     void on_pushButton_clicked();
     void CargarMundo();
     void ReboteDestruk();
-    void eliminarBoom();
+
+    void EjectMove();
+    void CargaB();
+
 
 private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
     Nave *Destruk;
+    Portal *portal;
+    Proyectil *Misil;
+    int Bomba;
+    bool cargar=true;
     int NaveVel=0;
+    void GenerarMisil();
+    void keyPressEvent(QKeyEvent * event);
+    void colisiones(void);
 
     ////////////TIMERS///////////////
 
     QTimer *TimeRot;
-    QTimer *TimeFire;
+    QTimer *TimeMov;
+    QTimer *MisilPos;
+    QTimer *TimeBoom;
+
+
 
 };
 

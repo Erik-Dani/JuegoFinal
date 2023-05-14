@@ -33,22 +33,22 @@ public:
     {
         if (Game->objectName().isEmpty())
             Game->setObjectName("Game");
-        Game->resize(1920, 1020);
+        Game->resize(1300, 900);
         centralwidget = new QWidget(Game);
         centralwidget->setObjectName("centralwidget");
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(800, 800, 321, 211));
+        pushButton->setGeometry(QRect(620, 810, 100, 50));
         pushButton->setStyleSheet(QString::fromUtf8("border-image: url(:/play.png);\n"
 "font: 700 italic 9pt \"Roman\";\n"
 "color: rgb(127, 42, 255);"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
-        graphicsView->setGeometry(QRect(0, 0, 1920, 500));
+        graphicsView->setGeometry(QRect(0, 0, 1300, 800));
         Game->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Game);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1920, 21));
+        menubar->setGeometry(QRect(0, 0, 1300, 21));
         Game->setMenuBar(menubar);
         statusbar = new QStatusBar(Game);
         statusbar->setObjectName("statusbar");

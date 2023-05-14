@@ -1,31 +1,48 @@
 
 #include "proyectil.h"
 
-Proyectil::Proyectil(int x, int y)
+int Proyectil::getPosx() const
 {
-    dimx=15;
-    dimy=15;
-    this ->posx=x;
-    this->posy=y;
-    setPos(posx,posy+8);
+    return posx;
 }
 
-void Proyectil::Movimiento()
+void Proyectil::setPosx(int newPosx)
 {
-    posx+= velx*CDT;
-    posy+= vely*CDT;
+    posx = newPosx;
+}
 
-    setPos(posx,posy);
+int Proyectil::getPosy() const
+{
+    return posy;
+}
+
+void Proyectil::setPosy(int newPosy)
+{
+    posy = newPosy;
+}
+
+Proyectil::Proyectil(int x, int y)
+{
+    dimx=30;
+    dimy=30;
+    this->posx=x;
+    this->posy=y;
 }
 
 QRectF Proyectil::boundingRect() const
 {
-    return QRectF(0,0,dimx,dimy);
+    return QRectF(0,0,dimx*2,dimy*2);
 }
 
 void Proyectil::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setBrush(Qt::red);
-    painter->drawRect(boundingRect());
+    painter->drawEllipse(boundingRect());
 }
 
+void Proyectil::advance(int phase)
+{
+    posx = posx;
+    posy = posy+vel*DT;
+    setPos(posx,posy);
+}

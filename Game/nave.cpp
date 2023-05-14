@@ -1,30 +1,11 @@
 
 #include "nave.h"
 
-
-void Nave::Movimiento(int x, int y)
+Nave::Nave(float x, float y)
 {
     this->posx=x;
     this->posy=y;
-    setPos(posx, posy);
-}
-
-Proyectil *Nave::Disparar()
-{
-    if(Misiles.size()<3){
-        Misiles.push_back(new Proyectil(posx,posy));
-        return Misiles.last();
-    }
-    return nullptr;
-}
-
-Nave::Nave(int x, int y, int r)
-{
-    this->posx=x;
-    this->posy=y;
-    this->radio=r;
-    this->velocidad=3;
-    setPos(posx, posy);
+    this->radio=30;
 }
 
 int Nave::getPosx() const
@@ -32,7 +13,7 @@ int Nave::getPosx() const
     return posx;
 }
 
-void Nave::setPosx(int newPosx)
+void Nave::setPosx(float newPosx)
 {
     posx = newPosx;
 }
@@ -42,9 +23,42 @@ int Nave::getPosy() const
     return posy;
 }
 
-void Nave::setPosy(int newPosy)
+void Nave::setPosy(float newPosy)
 {
     posy = newPosy;
+}
+int Nave::getVelocidad() const
+{
+    return velocidad;
+}
+
+void Nave::setVelocidad(float newVelocidad)
+{
+    velocidad = newVelocidad;
+}
+
+void Nave::Movimiento(float V)
+{
+    this->velocidad=V;
+    posx = velocidad + posx;
+    setPos(posx,posy);
+}
+
+Proyectil *Nave::Disparar(float bom)
+{
+    if(Misiles.size()<10){
+        //qDebug()<<"POsicion del misil : "<<getPosx();
+        Misiles.push_back(new Proyectil(bom,getPosy()));
+        return Misiles.last();
+    }
+    return nullptr;
+}
+
+Proyectil *Nave::EliminarProyectil()
+{
+    Proyectil *p = Misiles.first();
+    Misiles.remove(0);///como se usa?
+    return p;
 }
 
 QRectF Nave::boundingRect() const
@@ -55,5 +69,5 @@ QRectF Nave::boundingRect() const
 void Nave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setBrush(Qt::yellow);
-    painter->drawEllipse(boundingRect());
+    painter->drawRect(boundingRect());
 }

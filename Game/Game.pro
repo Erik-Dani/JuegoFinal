@@ -13,12 +13,14 @@ SOURCES += \
     main.cpp \
     game.cpp \
     nave.cpp \
+    portal.cpp \
     proyectil.cpp
 
 HEADERS += \
     game.h \
     gamebase.h \
     nave.h \
+    portal.h \
     proyectil.h
 
 FORMS += \

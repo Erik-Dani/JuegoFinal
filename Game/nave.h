@@ -6,39 +6,44 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include <QPixmap>
-#include <QKeyEvent>
+
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QVector>
 #include "proyectil.h"
 
-using namespace std;
+#define DT 0.2
 
 class Nave : public QObject, public QGraphicsPixmapItem
 
 {
-    int posx;
-    int posy;
-    int radio;
-    int velocidad;
+    float posx=0, posy=0;
+    int radio=0;
+    float velocidad=0;
 
-    QVector<Proyectil *> Misiles;
+
 
 public:
 
-    Nave(int , int , int );
+    Nave(float , float );
 
-    void Movimiento(int , int );
+    Proyectil* Disparar(float ); //me retorna un puntero de la clase dispaprar
+    Proyectil* EliminarProyectil();//me elimina las bombas lanzadas.
 
-    Proyectil* Disparar(); //me retorna un puntero de la clase dispaprar
+    QTimer *MisilPos;
+    QVector<Proyectil *> Misiles;
+    int getPosx() const;
+    void setPosx(float newPosx);
+    int getPosy() const;
+    void setPosy(float newPosy);
+    int getVelocidad() const;
+    void setVelocidad(float newVelocidad);
 
+    void Movimiento(float);
 
     QRectF boundingRect() const ;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = nullptr);
-    int getPosx() const;
-    void setPosx(int newPosx);
-    int getPosy() const;
-    void setPosy(int newPosy);
+
 };
 #endif // NAVE_H
