@@ -3,38 +3,20 @@
 
 Punch::Punch(int x, int y)
 {
+    dimx=30;
+    dimy=30;
     this->posx=x;
     this->posy=y;
-    this->radio=30;
+    //vel=vel*cos(3.141592/4);
+//    TimeMov = new QTimer;
+//    connect(TimeMov,SIGNAL(timeout()),this,SLOT(Movimiento()));
+//    TimeMov->start(1000);
 }
 
-Proyectil *Punch::Disparar(float x)
-{
-    if(Misiles.size()<5){
-        //qDebug()<<"POsicion del misil : "<<getPosx();
-        Misiles.push_back(new Proyectil(2346,256));
-        return Misiles.last();
-    }
-    return nullptr;
-}
-
-Proyectil *Punch::EliminarProyectil()
-{
-    Proyectil *p = Misiles.first();
-    Misiles.remove(0);///como se usa?
-    return p;
-}
-
-void Punch::Movimiento(float v)
-{
-    this->velocidad=v;
-    posx = velocidad + posx;
-    setPos(posx,posy);
-}
 
 QRectF Punch::boundingRect() const
 {
-    return QRectF(posx,posy,2*radio,2*radio);
+    return QRectF(posx,posy,2*dimx,2*dimy);
 }
 
 void Punch::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -43,8 +25,21 @@ void Punch::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->drawRect(boundingRect());
 }
 
-Punch::advance(int phase)
+void Punch::CalcularPos()
 {
+    posx = posx-vel*0.5;
+    posy = posy;
+    setPos(posx,posy);
+}
 
+void Punch::CalcularVel()
+{
+    vel += 0.98 * tiempo;
+}
+
+void Punch::Calcular()
+{
+    CalcularVel();
+    CalcularPos();
 }
 

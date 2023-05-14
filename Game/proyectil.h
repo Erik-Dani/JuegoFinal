@@ -14,7 +14,7 @@ using namespace std;
 
 ///////////Macros///////////
 
-#define DT 0.00777;
+#define tiempo 1;
 
 class Proyectil :public QObject, public QGraphicsItem
 {
@@ -32,13 +32,15 @@ public:
     void setPosy(int newPosy);
     void setPosx(int newPosx);
 
+    void CalcularPos();
+    void CalcularVel();
+    void Calcular();
+
     virtual QRectF boundingRect() const;
     virtual void paint(
         QPainter *painter,
         const QStyleOptionGraphicsItem *option,
         QWidget *widget = nullptr);
-
-    void advance(int phase);
 };
 
 #endif // PROYECTIL_H

@@ -33,7 +33,7 @@ void Game::CargarMundo()//carga los personajes principales.
 
     NaveVel=4;
     Destruk =new Nave(10,-180);
-    P1=new Punch(2346,256);
+    P1=new Lanzador(2000,340);
     mundo->addItem(Destruk);
     mundo->addItem(P1);
     portal=new Portal(1030,830);
@@ -41,12 +41,16 @@ void Game::CargarMundo()//carga los personajes principales.
     TimeRot = new QTimer;
     TimeMov = new  QTimer;
     TimeBoom = new  QTimer;
+    TimePM = new QTimer;
     TimeRot->start(40);
     connect(TimeRot,SIGNAL(timeout()),this, SLOT(ReboteDestruk()));//Timer para mover la nave
     TimeMov->start(0);
     connect(TimeMov,SIGNAL(timeout()),this, SLOT(EjectMove()));
-    TimeBoom->start(12000);
+    TimeBoom->start(5000);
     connect(TimeBoom,SIGNAL(timeout()),this, SLOT(CargaB()));
+
+    connect(TimePM,SIGNAL(timeout()),this, SLOT(CargaMov()));
+    TimePM->start(100);
 }
 
 
@@ -63,9 +67,7 @@ void Game::ReboteDestruk()//Movimiento de la nave.
         K2=false;
         K1 =true;
     }
-    P1->Movimiento(-NaveVel);
 }
-
 
 void Game::NumRand()
 {
@@ -74,10 +76,8 @@ void Game::NumRand()
     setBomba(num);
 }
 
-
 void Game::EjectMove()
 {
-    mundo->advance();
     NumRand();
     Point1=Destruk->getPosx();
     CargarBomba(Point1+100);
@@ -90,10 +90,20 @@ void Game::CargaB()
     cargar=true;
 }
 
+void Game::CargaMov()
+{
+    for(auto IA: P1->Galactic){
+        IA->Calcular();
+    }
+    for(auto IB: Destruk->Misiles){
+        IB->Calcular();
+    }
+}
+
 
 void Game::colisiones()
 {
-    qDebug()<<"Actual tamaño :"<<Destruk->Misiles.size();
+    //qDebug()<<"Actual tamaño :"<<Destruk->Misiles.size();
     for(auto it: Destruk->Misiles){
         if((abs(portal->getPosx()-it->getPosx())<100 && abs(portal->getPosy()-it->getPosy())<100)||(abs(it->getPosx()-portal->getPosx())<100 && abs(it->getPosy()-portal->getPosy())<100)){
             //Proyectil *p = Destruk->Misiles.first();
@@ -103,7 +113,7 @@ void Game::colisiones()
             //Proyectil *p = Destruk->Misiles.first();
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
-            qDebug()<<"Actual tamaño :"<<Destruk->Misiles.size();
+            //qDebug()<<"Actual tamaño :"<<Destruk->Misiles.size();
         }
     }
 }
@@ -138,14 +148,9 @@ void Game::CargarBomba( int P)
 {
     if(getBomba()%2==0 && cargar==true){
         cargar=false;
+        auto C1=P1->Disparar();
+        if(C1!=nullptr) mundo->addItem(C1);
         auto B = Destruk->Disparar(P);
         if(B!=nullptr) mundo->addItem(B);
     }
-    if(getBomba()%3==0 && cargar==true){
-
-        auto B1=P1->Disparar(7);
-        if(B1!=nullptr) mundo->addItem(B1);
-    }
-
-
 }

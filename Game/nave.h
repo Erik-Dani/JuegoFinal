@@ -22,13 +22,11 @@ class Nave : public QObject, public QGraphicsPixmapItem
     float velocidad=0;
 
 
-
 public:
 
     Nave(float , float );
 
     Proyectil* Disparar(float ); //me retorna un puntero de la clase dispaprar
-    Proyectil* EliminarProyectil();//me elimina las bombas lanzadas.
 
     QTimer *MisilPos;
     QVector<Proyectil *> Misiles;

@@ -54,13 +54,6 @@ Proyectil *Nave::Disparar(float bom)
     return nullptr;
 }
 
-Proyectil *Nave::EliminarProyectil()
-{
-    Proyectil *p = Misiles.first();
-    Misiles.remove(0);///como se usa?
-    return p;
-}
-
 QRectF Nave::boundingRect() const
 {
     return QRectF(posx,posy,2*radio,2*radio);

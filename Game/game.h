@@ -19,6 +19,7 @@
 #include "proyectil.h"
 #include "portal.h"
 #include "punch.h"
+#include "lanzador.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -40,25 +41,30 @@ public:
     void setBomba(int newBomba);
     void CargarBomba(int);
     void NumRand();
+    void timerEvent(QTimerEvent *event());
+
 
 private slots:
     void on_pushButton_clicked();
     void CargarMundo();
     void ReboteDestruk();
-
     void EjectMove();
     void CargaB();
+    void CargaMov();
 
 
 private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
     Nave *Destruk;
+    Punch *Punc;
+
     ///////LANZADORES///////
-    Punch *P1;
-    Punch *P2;
-    Punch *P3;
-    Punch *P4;
+
+    Lanzador *P1;
+    Lanzador *P2;
+    Lanzador *P3;
+    Lanzador *P4;
     /////////PORTAL/////////
     Portal *portal;
     ////////MISIL///////////
@@ -75,7 +81,7 @@ private:
 
     QTimer *TimeRot;
     QTimer *TimeMov;
-    QTimer *MisilPos;
+    QTimer *TimePM;
     QTimer *TimeBoom;
 
     ////////////////////////////////

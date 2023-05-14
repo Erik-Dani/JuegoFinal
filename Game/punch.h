@@ -9,35 +9,26 @@
 #include <QPixmap>
 #include <QGraphicsItem>
 #include <QPainter>
-#include <QVector>
-#include "proyectil.h"
+#include <QObject>
+#include <math.h>
+
+# define tiempo 1
 
 class Punch : public QObject, public QGraphicsPixmapItem
 {
-    float posx=0, posy=0;
-    int radio=0;
-    float velocidad=0;
+private:
+    float posx, posy;
+    int dimx, dimy;
+    float vel=2;
 
 public:
 
-    Punch(int, int );
 
-    QTimer *MisilPos;
-
-    QVector<Proyectil *> Misiles;
-
-    Proyectil* Disparar(float ); //me retorna un puntero de la clase dispaprar
-    Proyectil *EliminarProyectil();//me elimina las bombas lanzadas.
-
-    int getPosx() const;
-    int getVelocidad() const;
-
-    void setPosx(float newPosx);
-    void setPosy(float newPosy);
-    void setVelocidad(float newVelocidad);
-
-    void Movimiento(float);
-
+    Punch(int, int);
+    //QTimer *TimeMov;
+    void CalcularPos();
+    void CalcularVel();
+    void Calcular();
     QRectF boundingRect() const ;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget = nullptr);
