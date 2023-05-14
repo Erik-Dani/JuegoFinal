@@ -32,11 +32,13 @@ public:
 
     QTimer *MisilPos;
     QVector<Proyectil *> Misiles;
+
     int getPosx() const;
     void setPosx(float newPosx);
     int getPosy() const;
     void setPosy(float newPosy);
     int getVelocidad() const;
+
     void setVelocidad(float newVelocidad);
 
     void Movimiento(float);

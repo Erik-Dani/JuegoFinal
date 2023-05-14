@@ -10,18 +10,22 @@ CONFIG += c++17
 
 SOURCES += \
     gamebase.cpp \
+    lanzador.cpp \
     main.cpp \
     game.cpp \
     nave.cpp \
     portal.cpp \
-    proyectil.cpp
+    proyectil.cpp \
+    punch.cpp
 
 HEADERS += \
     game.h \
     gamebase.h \
+    lanzador.h \
     nave.h \
     portal.h \
-    proyectil.h
+    proyectil.h \
+    punch.h
 
 FORMS += \
     game.ui

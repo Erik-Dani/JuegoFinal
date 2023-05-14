@@ -18,6 +18,7 @@
 #include "nave.h"
 #include "proyectil.h"
 #include "portal.h"
+#include "punch.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Game; }
@@ -53,12 +54,20 @@ private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
     Nave *Destruk;
+    ///////LANZADORES///////
+    Punch *P1;
+    Punch *P2;
+    Punch *P3;
+    Punch *P4;
+    /////////PORTAL/////////
     Portal *portal;
+    ////////MISIL///////////
     Proyectil *Misil;
+    ////VARIABLES PUBLIC////
     int Bomba;
     bool cargar=true;
     int NaveVel=0;
-    void GenerarMisil();
+    ///////FUNCIONES DE ACCION///////
     void keyPressEvent(QKeyEvent * event);
     void colisiones(void);
 
@@ -69,8 +78,7 @@ private:
     QTimer *MisilPos;
     QTimer *TimeBoom;
 
-
-
+    ////////////////////////////////
 };
 
 #endif // GAME_H
