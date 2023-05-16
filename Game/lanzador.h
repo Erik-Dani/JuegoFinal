@@ -11,16 +11,16 @@
 #include <QPainter>
 #include <QVector>
 #include "punch.h"
+#include <math.h>
+#include "gamebase.h"
 
-class Lanzador : public QObject, public QGraphicsPixmapItem
+class Lanzador : public QObject, public QGraphicsPixmapItem, public GameBase
 {
-    float posx, posy;
-    int radio;
 
 public:
-    Lanzador(int, int);
+    Lanzador(double, double);
 
-    Punch* Disparar(); //me retorna un puntero de la clase dispaprar
+    Punch* Disparar(double , double ); //me retorna un puntero de la clase dispaprar
 
     QVector<Punch *> Galactic;
 

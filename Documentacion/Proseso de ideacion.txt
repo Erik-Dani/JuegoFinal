@@ -1,4 +1,0 @@
-Puño Bomba Planeta.
-
-El juego consiste en bombas y misiles que van a venir del espacio, siendo atraidas por el campo grabitatorio del paneta Zork. La trayectoria de las bombas y los misiles 
-sera modificada por Puños de guantes de Box que modificaran la trayectoria de los proyectiles, si un proyectil colisiona mas de 2 veces, este explotara dejando un efecto de aturdimiento que va a dificultar el movimiento de el agujero negro el cual tiene como finalidad evitar la colision de las bombas con el planeta,

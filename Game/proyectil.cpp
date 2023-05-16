@@ -1,27 +1,7 @@
 
 #include "proyectil.h"
 
-int Proyectil::getPosx() const
-{
-    return posx;
-}
-
-void Proyectil::setPosx(int newPosx)
-{
-    posx = newPosx;
-}
-
-int Proyectil::getPosy() const
-{
-    return posy;
-}
-
-void Proyectil::setPosy(int newPosy)
-{
-    posy = newPosy;
-}
-
-Proyectil::Proyectil(int x, int y)
+Proyectil::Proyectil(double x, double y)
 {
     dimx=30;
     dimy=30;

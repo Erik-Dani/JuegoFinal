@@ -33,7 +33,7 @@ void Game::CargarMundo()//carga los personajes principales.
 
     NaveVel=4;
     Destruk =new Nave(10,-180);
-    P1=new Lanzador(2000,340);
+    P1=new Lanzador(1600,600);
     mundo->addItem(Destruk);
     mundo->addItem(P1);
     portal=new Portal(1030,830);
@@ -42,15 +42,19 @@ void Game::CargarMundo()//carga los personajes principales.
     TimeMov = new  QTimer;
     TimeBoom = new  QTimer;
     TimePM = new QTimer;
-    TimeRot->start(40);
-    connect(TimeRot,SIGNAL(timeout()),this, SLOT(ReboteDestruk()));//Timer para mover la nave
-    TimeMov->start(0);
-    connect(TimeMov,SIGNAL(timeout()),this, SLOT(EjectMove()));
-    TimeBoom->start(5000);
-    connect(TimeBoom,SIGNAL(timeout()),this, SLOT(CargaB()));
+    TimePunch = new QTimer;
 
+    connect(TimeRot,SIGNAL(timeout()),this, SLOT(ReboteDestruk()));//Timer para mover la nave
+    TimeRot->start(40);
+    connect(TimeMov,SIGNAL(timeout()),this, SLOT(EjectMove()));
+    TimeMov->start(0);
+    connect(TimeBoom,SIGNAL(timeout()),this, SLOT(CargaB()));
+    TimeBoom->start(5000);
     connect(TimePM,SIGNAL(timeout()),this, SLOT(CargaMov()));
     TimePM->start(100);
+
+    connect(TimePunch,SIGNAL(timeout()),this, SLOT(CargarPunch()));
+    TimePunch->start(100);
 }
 
 
@@ -79,8 +83,7 @@ void Game::NumRand()
 void Game::EjectMove()
 {
     NumRand();
-    Point1=Destruk->getPosx();
-    CargarBomba(Point1+100);
+    CargarBomba();
     colisiones();
 }
 
@@ -88,6 +91,7 @@ void Game::EjectMove()
 void Game::CargaB()
 {
     cargar=true;
+    if(getBomba()%5==0) Fire=true;
 }
 
 void Game::CargaMov()
@@ -95,27 +99,38 @@ void Game::CargaMov()
     for(auto IA: P1->Galactic){
         IA->Calcular();
     }
-    for(auto IB: Destruk->Misiles){
+
+    /*or(auto IB: Destruk->Misiles){
         IB->Calcular();
+    }*/
+}
+
+void Game::CargarPunch()
+{
+    if(getBomba()%3==0 && Fire == true){
+        Fire=false;
+        auto C1=P1->Disparar(650,650);
+        if(C1!=nullptr) mundo->addItem(C1);
     }
 }
 
 
 void Game::colisiones()
 {
-    //qDebug()<<"Actual tamaño :"<<Destruk->Misiles.size();
     for(auto it: Destruk->Misiles){
-        if((abs(portal->getPosx()-it->getPosx())<100 && abs(portal->getPosy()-it->getPosy())<100)||(abs(it->getPosx()-portal->getPosx())<100 && abs(it->getPosy()-portal->getPosy())<100)){
-            //Proyectil *p = Destruk->Misiles.first();
+        if((abs(portal->getPosx()-it->getPosx())<100 && abs(portal->getPosy()-it->getPosy())<100)||(abs(it->getPosx()-portal->getPosx())<100 && abs(it->getPosy()-portal->getPosy())<100)){            
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
         }else if(it->getPosy()>1200 ){
-            //Proyectil *p = Destruk->Misiles.first();
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
-            //qDebug()<<"Actual tamaño :"<<Destruk->Misiles.size();
         }
     }
+}
+
+void Game::colisiones2()
+{
+
 }
 
 
@@ -123,12 +138,16 @@ void Game::keyPressEvent(QKeyEvent *event)
 {
     if(event->key()==Qt::Key_W){
         portal->MoveUp();
+        qDebug()<<"Pos in y: "<<portal->getPosy();
     } else if(event->key()==Qt::Key_S){
         portal->MoveDown();
+        qDebug()<<"Pos in y: "<<portal->getPosy();
     }else if(event->key()==Qt::Key_D){
         portal->MoveRight();
+        qDebug()<<"Pos in x: "<<portal->getPosx();
     }else if(event->key()==Qt::Key_A){
         portal->MoveLeft();
+        qDebug()<<"Pos in x: "<<portal->getPosx();
     }
 }
 ///por cada 3 ronda acotar el espacio de lanzamiento de la nave.;
@@ -144,13 +163,11 @@ void Game::setBomba(int newBomba)
 }
 
 
-void Game::CargarBomba( int P)
+void Game::CargarBomba()
 {
     if(getBomba()%2==0 && cargar==true){
         cargar=false;
-        auto C1=P1->Disparar();
-        if(C1!=nullptr) mundo->addItem(C1);
-        auto B = Destruk->Disparar(P);
+        auto B = Destruk->Disparar();
         if(B!=nullptr) mundo->addItem(B);
     }
 }

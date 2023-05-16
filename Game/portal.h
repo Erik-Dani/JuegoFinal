@@ -11,6 +11,8 @@
 #include <QPixmap>
 #include <QTimer>
 
+#define tiempo 1;
+
 class Portal : public QObject ,public QGraphicsItem
 {
     int posx, posy, radio, velocidad=7;

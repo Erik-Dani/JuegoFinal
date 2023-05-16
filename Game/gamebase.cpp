@@ -66,3 +66,23 @@ GameBase::GameBase()
 
 }
 
+double GameBase::getVel() const
+{
+    return vel;
+}
+
+void GameBase::setVel(int newVel)
+{
+    vel = newVel;
+}
+
+double GameBase::getDimy() const
+{
+    return dimy;
+}
+
+void GameBase::setDimy(double newDimy)
+{
+    dimy = newDimy;
+}
+

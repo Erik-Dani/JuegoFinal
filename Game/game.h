@@ -29,8 +29,11 @@ class Game : public QMainWindow
 
 {
     Q_OBJECT
+
     bool K1=true;
     bool K2=false;
+    bool Fire=true;
+
     float Point1=0;
 
 public:
@@ -39,7 +42,7 @@ public:
 
     int getBomba() const;
     void setBomba(int newBomba);
-    void CargarBomba(int);
+    void CargarBomba();
     void NumRand();
     void timerEvent(QTimerEvent *event());
 
@@ -51,6 +54,7 @@ private slots:
     void EjectMove();
     void CargaB();
     void CargaMov();
+    void CargarPunch();
 
 
 private:
@@ -76,6 +80,7 @@ private:
     ///////FUNCIONES DE ACCION///////
     void keyPressEvent(QKeyEvent * event);
     void colisiones(void);
+    void colisiones2(void);
 
     ////////////TIMERS///////////////
 
@@ -83,6 +88,7 @@ private:
     QTimer *TimeMov;
     QTimer *TimePM;
     QTimer *TimeBoom;
+    QTimer *TimePunch;
 
     ////////////////////////////////
 };
