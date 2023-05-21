@@ -1,4 +1,6 @@
 release/gamebase.o
+release/interfaz.o
+release/jugador.o
 release/lanzador.o
 release/main.o
 release/game.o
@@ -8,3 +10,4 @@ release/proyectil.o
 release/punch.o
 release/qrc_Imagenes.o
 release/moc_game.o
+release/moc_interfaz.o

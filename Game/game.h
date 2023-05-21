@@ -35,7 +35,7 @@ class Game : public QMainWindow
     bool Fire=true;
     bool artilleria;
     float Point1=0;
-    int nivel;
+    int nivel=1,contBll=0;
 
 public:
     Game(QWidget *parent = nullptr);
@@ -43,19 +43,23 @@ public:
 
     int getBomba() const;
     void setBomba(int newBomba);
+
+    void CargarMundo();
     void CargarBomba();
     void NumRand();
     void timerEvent(QTimerEvent *event());
 
+signals:
+    void aviso(int);
 
 private slots:
-    void on_pushButton_clicked();
     void ReboteDestruk();
     void EjectMove();
     void CargaB();
     void CargaMov();
     void CargarPunch();
-    void CargarMundo();
+
+    void on_lcdLevel_overflow();
 
 private:
     Ui::Game *ui;

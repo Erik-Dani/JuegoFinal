@@ -10,6 +10,8 @@ CONFIG += c++17
 
 SOURCES += \
     gamebase.cpp \
+    interfaz.cpp \
+    jugador.cpp \
     lanzador.cpp \
     main.cpp \
     game.cpp \
@@ -21,6 +23,8 @@ SOURCES += \
 HEADERS += \
     game.h \
     gamebase.h \
+    interfaz.h \
+    jugador.h \
     lanzador.h \
     nave.h \
     portal.h \
@@ -28,7 +32,8 @@ HEADERS += \
     punch.h
 
 FORMS += \
-    game.ui
+    game.ui \
+    interfaz.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -9,10 +9,11 @@ Game::Game(QWidget *parent)
 {
     ui->setupUi(this);
     mundo=new QGraphicsScene(this);
-    ui->graphicsView->scale(.5,.5);
+    //ui->graphicsView->scale(.5,.5);
     ui->graphicsView->setScene(mundo);
-    mundo->setSceneRect(0,0,1200,800);
-    connect(ui->pushButton,&QPushButton::clicked,this, &Game::CargarMundo);
+    mundo->setSceneRect(0,0,1300,851);
+    CargarMundo();
+
 }
 
 
@@ -20,14 +21,6 @@ Game::~Game()
 {
     delete ui;
 }
-
-
-void Game::on_pushButton_clicked()
-{
-    ui->pushButton->hide();
-}
-
-
 void Game::CargarMundo()//carga los personajes principales.
 {
 
@@ -60,16 +53,16 @@ void Game::CargarMundo()//carga los personajes principales.
     mundo->addItem(P4);
 
     ///////////////////// SIGNASL & SLOTS ////////////////
-
+    connect(this,SIGNAL(aviso(int)),this,SLOT(on_lcdLevel_overflow()));
+    aviso(1);
     connect(TimeRot,SIGNAL(timeout()),this, SLOT(ReboteDestruk()));//Timer para mover la nave
     TimeRot->start(40);
     connect(TimeMov,SIGNAL(timeout()),this, SLOT(EjectMove()));
     TimeMov->start(0);
     connect(TimeBoom,SIGNAL(timeout()),this, SLOT(CargaB()));
-    TimeBoom->start(800);
+    TimeBoom->start(700);
     connect(TimePM,SIGNAL(timeout()),this, SLOT(CargaMov()));
     TimePM->start(100);
-
 
 }
 
@@ -103,9 +96,12 @@ void Game::EjectMove()
     NumRand();
     CargarBomba();
     colisiones();
+    if(contBll==10){
+        contBll=0;
+        nivel++;
+        aviso(1);
+    }
 }
-
-
 void Game::CargaB()
 {
     if(getBomba()%6==0) cargar=true;
@@ -147,7 +143,7 @@ void Game::CargarPunch()
 void Game::colisiones()
 {
     for(auto it: Destruk->Misiles){
-        if((abs(portal->getPosx()-it->getPosx())<100 && abs(portal->getPosy()-it->getPosy())<100)||(abs(it->getPosx()-portal->getPosx())<100 && abs(it->getPosy()-portal->getPosy())<100)){            
+        if((abs(portal->getPosx()-it->getPosx())<50 && abs(portal->getPosy()-it->getPosy())<50)||(abs(it->getPosx()-portal->getPosx())<50 && abs(it->getPosy()-portal->getPosy())<50)){
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
         }else if(it->getPosy()>1200 ){
@@ -221,6 +217,7 @@ void Game::CargarBomba()
     if(getBomba()%2==0 && cargar==true){
         cargar=false;
         auto B = Destruk->Disparar();
+        contBll++;
         if(B!=nullptr) mundo->addItem(B);
         artilleria=true;
 
@@ -259,3 +256,10 @@ void Game::CargarBomba()
     }
     artilleria=false;
 }
+
+void Game::on_lcdLevel_overflow()
+{
+    ui->lcdLevel->display(nivel);
+    std::cout<<nivel<<std::endl;
+}
+

@@ -12,9 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QLCDNumber>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -24,8 +26,11 @@ class Ui_Game
 {
 public:
     QWidget *centralwidget;
-    QPushButton *pushButton;
     QGraphicsView *graphicsView;
+    QProgressBar *progressBar;
+    QLCDNumber *lcdLevel;
+    QLabel *label;
+    QLabel *label_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -33,22 +38,31 @@ public:
     {
         if (Game->objectName().isEmpty())
             Game->setObjectName("Game");
-        Game->resize(1300, 900);
+        Game->resize(1326, 965);
         centralwidget = new QWidget(Game);
         centralwidget->setObjectName("centralwidget");
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(620, 810, 100, 50));
-        pushButton->setStyleSheet(QString::fromUtf8("border-image: url(:/play.png);\n"
-"font: 700 italic 9pt \"Roman\";\n"
-"color: rgb(127, 42, 255);"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
-        graphicsView->setGeometry(QRect(0, 0, 1300, 800));
+        graphicsView->setGeometry(QRect(0, 0, 1321, 921));
+        progressBar = new QProgressBar(centralwidget);
+        progressBar->setObjectName("progressBar");
+        progressBar->setGeometry(QRect(440, 0, 118, 41));
+        progressBar->setValue(24);
+        lcdLevel = new QLCDNumber(centralwidget);
+        lcdLevel->setObjectName("lcdLevel");
+        lcdLevel->setGeometry(QRect(80, 0, 101, 41));
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(20, 0, 61, 41));
+        label->setStyleSheet(QString::fromUtf8("font: 700 20pt \"8514oem\";"));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(190, 10, 241, 31));
+        label_2->setStyleSheet(QString::fromUtf8("font: 700 20pt \"8514oem\";"));
         Game->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Game);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1300, 21));
+        menubar->setGeometry(QRect(0, 0, 1326, 21));
         Game->setMenuBar(menubar);
         statusbar = new QStatusBar(Game);
         statusbar->setObjectName("statusbar");
@@ -62,7 +76,8 @@ public:
     void retranslateUi(QMainWindow *Game)
     {
         Game->setWindowTitle(QCoreApplication::translate("Game", "Game", nullptr));
-        pushButton->setText(QCoreApplication::translate("Game", "play", nullptr));
+        label->setText(QCoreApplication::translate("Game", "Nivel", nullptr));
+        label_2->setText(QCoreApplication::translate("Game", "Destruccion Planetaria", nullptr));
     } // retranslateUi
 
 };

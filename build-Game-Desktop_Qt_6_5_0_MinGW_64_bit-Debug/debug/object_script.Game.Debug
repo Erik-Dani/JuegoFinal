@@ -1,4 +1,6 @@
 debug/gamebase.o
+debug/interfaz.o
+debug/jugador.o
 debug/lanzador.o
 debug/main.o
 debug/game.o
@@ -8,3 +10,4 @@ debug/proyectil.o
 debug/punch.o
 debug/qrc_Imagenes.o
 debug/moc_game.o
+debug/moc_interfaz.o
