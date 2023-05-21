@@ -1,7 +1,7 @@
 
 #include "nave.h"
 
-Nave::Nave(double x, double y)
+Nave::Nave(float x, float y)
 {
     this->posx=x;
     this->posy=y;
@@ -9,7 +9,7 @@ Nave::Nave(double x, double y)
     this->dimy=30;
 }
 
-void Nave::Movimiento(double V)
+void Nave::Movimiento(float V)
 {
     this->vel=V;
     posx = vel + posx;
@@ -19,7 +19,7 @@ void Nave::Movimiento(double V)
 Proyectil *Nave::Disparar()
 {
     if(Misiles.size()<10){
-        Misiles.push_back(new Proyectil(Nave::getPosx(),Nave::getPosy()));
+        Misiles.push_back(new Proyectil(getPosx(),getPosy()));
         return Misiles.last();
     }
     return nullptr;
@@ -27,7 +27,7 @@ Proyectil *Nave::Disparar()
 
 QRectF Nave::boundingRect() const
 {
-    return QRectF(posx,posy,2*dimx,2*dimy);
+    return QRectF(-30,-30,2*dimx,2*dimy);
 }
 
 void Nave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

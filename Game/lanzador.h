@@ -18,9 +18,9 @@ class Lanzador : public QObject, public QGraphicsPixmapItem, public GameBase
 {
 
 public:
-    Lanzador(double, double);
+    Lanzador(float, float);
 
-    Punch* Disparar(double , double ); //me retorna un puntero de la clase dispaprar
+    Punch* Disparar(float ); //me retorna un puntero de la clase dispaprar
 
     QVector<Punch *> Galactic;
 

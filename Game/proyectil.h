@@ -11,17 +11,18 @@
 #include <math.h>
 #include "gamebase.h"
 
-#define tiempo 1;
+#define tiempo 1
 
 class Proyectil :public QObject, public QGraphicsItem, public GameBase
 {
 
 public:
 
-    Proyectil(double, double);
+    Proyectil(float, float);
 
     void CalcularPos();
     void CalcularVel();
+    void ActualizarVelocidad();
     void Calcular();
 
     virtual QRectF boundingRect() const;

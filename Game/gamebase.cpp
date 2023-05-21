@@ -1,62 +1,62 @@
 
 #include "gamebase.h"
 
-double GameBase::getPosx() const
+float GameBase::getPosx() const
 {
     return posx;
 }
 
-void GameBase::setPosx(double newPosx)
+void GameBase::setPosx(float newPosx)
 {
     posx = newPosx;
 }
 
-double GameBase::getPosy() const
+float GameBase::getPosy() const
 {
     return posy;
 }
 
-void GameBase::setPosy(double newPosy)
+void GameBase::setPosy(float newPosy)
 {
     posy = newPosy;
 }
 
-double GameBase::getDimx() const
+float GameBase::getDimx() const
 {
     return dimx;
 }
 
-void GameBase::setDimx(double newDimx)
+void GameBase::setDimx(float newDimx)
 {
     dimx = newDimx;
 }
 
-double GameBase::getVelx() const
+float GameBase::getVelx() const
 {
     return velx;
 }
 
-void GameBase::setVelx(double newVelx)
+void GameBase::setVelx(float newVelx)
 {
     velx = newVelx;
 }
 
-double GameBase::getVely() const
+float GameBase::getVely() const
 {
     return vely;
 }
 
-void GameBase::setVely(double newVely)
+void GameBase::setVely(float newVely)
 {
     vely = newVely;
 }
 
-double GameBase::getGrabedad() const
+float GameBase::getGrabedad() const
 {
     return grabedad;
 }
 
-void GameBase::setGrabedad(double newGrabedad)
+void GameBase::setGrabedad(float newGrabedad)
 {
     grabedad = newGrabedad;
 }
@@ -66,22 +66,52 @@ GameBase::GameBase()
 
 }
 
-double GameBase::getVel() const
+float GameBase::getAngulo() const
+{
+    return angulo;
+}
+
+void GameBase::setAngulo(float newAngulo)
+{
+    angulo = newAngulo;
+}
+
+int GameBase::getDireccion() const
+{
+    return direccion;
+}
+
+void GameBase::setDireccion(int newDireccion)
+{
+    direccion = newDireccion;
+}
+
+int GameBase::getTipo() const
+{
+    return tipo;
+}
+
+void GameBase::setTipo(int newTipo)
+{
+    tipo = newTipo;
+}
+
+float GameBase::getVel() const
 {
     return vel;
 }
 
-void GameBase::setVel(int newVel)
+void GameBase::setVel(float newVel)
 {
     vel = newVel;
 }
 
-double GameBase::getDimy() const
+float GameBase::getDimy() const
 {
     return dimy;
 }
 
-void GameBase::setDimy(double newDimy)
+void GameBase::setDimy(float newDimy)
 {
     dimy = newDimy;
 }

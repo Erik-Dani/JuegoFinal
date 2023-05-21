@@ -1,19 +1,20 @@
 
 #include "lanzador.h"
 
-Lanzador::Lanzador(double x, double y)
+Lanzador::Lanzador(float x, float y)
 {
-    posx=x;
-    posy=y;
-    dimx=30;
-    dimy=30;
+    this->posx=x;
+    this->posy=y;
+    this->dimx=15;
+    this->dimy=15;
+    setPos(x,y);
 }
 
-Punch *Lanzador::Disparar(double p1, double p2)
+Punch *Lanzador::Disparar(float V)
 {
     if(Galactic.size()<5){
-        qDebug()<<"POsicion del misil : "<<getPosx();
-        Galactic.push_back(new Punch(p1,p2));
+        qDebug()<<" POS X :"<<getPosx()<<"POS Y : "<<getPosy();
+        Galactic.push_back(new Punch(getPosx(),getPosy(), V ));
         return Galactic.last();
     }
     return nullptr;
@@ -21,7 +22,7 @@ Punch *Lanzador::Disparar(double p1, double p2)
 
 QRectF Lanzador::boundingRect() const
 {
-    return QRectF(0,0,2*dimx,2*dimy);
+    return QRectF(-15,-15,2*dimx,2*dimy);
 }
 
 void Lanzador::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

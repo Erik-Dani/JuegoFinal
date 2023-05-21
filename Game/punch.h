@@ -10,24 +10,28 @@
 #include <QPainter>
 #include <QObject>
 #include <math.h>
+#include <math.h>
 #include "gamebase.h"
 
-#define tiempo 1;
+#define tiempo 0.2
 
 class Punch : public QObject, public QGraphicsPixmapItem, public GameBase
 {
 
 public:
 
-    Punch(double, double);
+    Punch(float, float, float);
 
     void CalcularPos();
     void CalcularVel();
+    void ActualizarVelocidad();
     void Calcular();
 
-    QRectF boundingRect() const ;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget = nullptr);
+    virtual QRectF boundingRect() const ;
+
+    virtual void paint(QPainter *painter,
+        const QStyleOptionGraphicsItem *option,
+        QWidget *widget = nullptr);
 };
 
 #endif // PUNCH_H

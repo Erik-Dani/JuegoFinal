@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>play.png</file>
+        <file>Recursos/universe.gif</file>
     </qresource>
 </RCC>

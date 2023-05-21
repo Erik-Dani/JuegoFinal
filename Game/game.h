@@ -33,8 +33,9 @@ class Game : public QMainWindow
     bool K1=true;
     bool K2=false;
     bool Fire=true;
-
+    bool artilleria;
     float Point1=0;
+    int nivel;
 
 public:
     Game(QWidget *parent = nullptr);
@@ -49,13 +50,12 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-    void CargarMundo();
     void ReboteDestruk();
     void EjectMove();
     void CargaB();
     void CargaMov();
     void CargarPunch();
-
+    void CargarMundo();
 
 private:
     Ui::Game *ui;
@@ -76,6 +76,11 @@ private:
     ////VARIABLES PUBLIC////
     int Bomba;
     bool cargar=true;
+    bool carga1=true;
+    bool carga2=true;
+    bool carga3=true;
+    bool carga4=true;
+
     int NaveVel=0;
     ///////FUNCIONES DE ACCION///////
     void keyPressEvent(QKeyEvent * event);

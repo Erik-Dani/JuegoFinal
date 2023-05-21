@@ -60,7 +60,7 @@ void Portal::MoveRight()
 
 QRectF Portal::boundingRect() const
 {
-    return QRectF(0,0,dimx*2,dimy*2);
+    return QRectF(-30,-30,dimx*2,dimy*2);
 }
 
 void Portal::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

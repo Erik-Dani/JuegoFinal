@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QTimer>
 #include <QPixmap>
+
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QVector>
@@ -21,11 +22,11 @@ class Nave : public QObject, public QGraphicsPixmapItem, public GameBase
 
 public:
 
-    Nave(double, double );
+    Nave(float, float );
 
     Proyectil* Disparar(); //me retorna un puntero de la clase dispaprar
     QVector<Proyectil *> Misiles;
-    void Movimiento(double);
+    void Movimiento(float);
 
     QRectF boundingRect() const ;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
