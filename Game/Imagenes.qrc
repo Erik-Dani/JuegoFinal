@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>play.png</file>
-        <file>Recursos/universe.gif</file>
+        <file>Recursos/ppg.jpg</file>
+        <file>Recursos/Planet_T.jpg</file>
+        <file>Recursos/Deteck.jpg</file>
     </qresource>
 </RCC>

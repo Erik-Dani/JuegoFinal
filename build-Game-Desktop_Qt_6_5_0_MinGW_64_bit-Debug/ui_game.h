@@ -47,7 +47,12 @@ public:
         progressBar = new QProgressBar(centralwidget);
         progressBar->setObjectName("progressBar");
         progressBar->setGeometry(QRect(440, 0, 118, 41));
+        progressBar->setStyleSheet(QString::fromUtf8("font: 700 9pt \"8514oem\";\n"
+"font: 700 30pt \"8514oem\";\n"
+"selection-background-color: rgb(51, 255, 214);\n"
+""));
         progressBar->setValue(24);
+        progressBar->setTextVisible(true);
         lcdLevel = new QLCDNumber(centralwidget);
         lcdLevel->setObjectName("lcdLevel");
         lcdLevel->setGeometry(QRect(80, 0, 101, 41));
@@ -76,8 +81,8 @@ public:
     void retranslateUi(QMainWindow *Game)
     {
         Game->setWindowTitle(QCoreApplication::translate("Game", "Game", nullptr));
-        label->setText(QCoreApplication::translate("Game", "Nivel", nullptr));
-        label_2->setText(QCoreApplication::translate("Game", "Destruccion Planetaria", nullptr));
+        label->setText(QCoreApplication::translate("Game", "<html><head/><body><p><span style=\" color:#27fff8;\">Nivel</span></p></body></html>", nullptr));
+        label_2->setText(QCoreApplication::translate("Game", "<html><head/><body><p><span style=\" color:#17fcda;\">Destruccion Planetaria</span></p></body></html>", nullptr));
     } // retranslateUi
 
 };

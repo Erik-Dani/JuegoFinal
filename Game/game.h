@@ -15,6 +15,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
+#include <QProgressBar>
 #include "nave.h"
 #include "proyectil.h"
 #include "portal.h"
@@ -35,7 +36,7 @@ class Game : public QMainWindow
     bool Fire=true;
     bool artilleria;
     float Point1=0;
-    int nivel=1,contBll=0;
+    int nivel=1,contBll=0, Destruction=0, Level_Up=0;
 
 public:
     Game(QWidget *parent = nullptr);
@@ -48,6 +49,10 @@ public:
     void CargarBomba();
     void NumRand();
     void timerEvent(QTimerEvent *event());
+    void EndGame();
+    void Vortex();
+    int getLevel_Up() const;
+    void setLevel_Up(int newLevel_Up);
 
 signals:
     void aviso(int);
@@ -61,11 +66,14 @@ private slots:
 
     void on_lcdLevel_overflow();
 
+    void on_progressBar_valueChanged(int value);
+
 private:
     Ui::Game *ui;
     QGraphicsScene  *mundo;
     Nave *Destruk;
     Punch *Punc;
+    QProgressBar *progressBar;
 
     ///////LANZADORES///////
 

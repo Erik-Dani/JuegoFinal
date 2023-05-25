@@ -2,7 +2,6 @@
 #include "game.h"
 #include "ui_game.h"
 
-
 Game::Game(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Game)
@@ -32,10 +31,13 @@ void Game::CargarMundo()//carga los personajes principales.
     portal=new Portal(1000,830);
 
     P1= new Lanzador(-65,520);
-    P2= new Lanzador(1250,600);
+    P2= new Lanzador(1330,600);
     P3= new Lanzador(-65,720);
-    P4= new Lanzador(1250,780);
-
+    P4= new Lanzador(1330,780);
+    progressBar = new QProgressBar();
+    progressBar->setRange(0,100);
+    progressBar->setValue(0);
+    on_progressBar_valueChanged(0);
     /////////////////////// TIMERS //////////////////////
 
     TimeRot = new QTimer;
@@ -51,6 +53,8 @@ void Game::CargarMundo()//carga los personajes principales.
     mundo->addItem(P2);
     mundo->addItem(P3);
     mundo->addItem(P4);
+    if(getLevel_Up()==2) Vortex();
+    mundo->setBackgroundBrush(QBrush(QImage(":/Recursos/Planet_T.jpg").scaled(1310,860)));
 
     ///////////////////// SIGNASL & SLOTS ////////////////
     connect(this,SIGNAL(aviso(int)),this,SLOT(on_lcdLevel_overflow()));
@@ -89,6 +93,16 @@ void Game::NumRand()
     srand(time(0));
     int num= 1+(rand()%367);
     setBomba(num);
+}
+
+void Game::EndGame()
+{
+    mundo->setBackgroundBrush(QBrush(QImage(":/Recursos/Deteck.jpg").scaled(1310,860)));
+}
+
+void Game::Vortex()
+{
+
 }
 
 void Game::EjectMove()
@@ -146,7 +160,10 @@ void Game::colisiones()
         if((abs(portal->getPosx()-it->getPosx())<50 && abs(portal->getPosy()-it->getPosy())<50)||(abs(it->getPosx()-portal->getPosx())<50 && abs(it->getPosy()-portal->getPosy())<50)){
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
-        }else if(it->getPosy()>1200 ){
+        }else if(it->getPosy()>860 ){
+            Destruction+=25;
+            on_progressBar_valueChanged(Destruction);
+            if(Destruction==100) EndGame();
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
         }
@@ -263,3 +280,18 @@ void Game::on_lcdLevel_overflow()
     std::cout<<nivel<<std::endl;
 }
 
+
+void Game::on_progressBar_valueChanged(int value)
+{
+    ui->progressBar->setValue(value);
+}
+
+int Game::getLevel_Up() const
+{
+    return Level_Up;
+}
+
+void Game::setLevel_Up(int newLevel_Up)
+{
+    Level_Up = newLevel_Up;
+}

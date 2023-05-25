@@ -14,6 +14,7 @@ class Interfaz : public QWidget
 {
     Q_OBJECT
 
+
 public:
     explicit Interfaz(QWidget *parent = nullptr);
     ~Interfaz();

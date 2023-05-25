@@ -32,6 +32,7 @@ public:
         frame = new QFrame(Interfaz);
         frame->setObjectName("frame");
         frame->setGeometry(QRect(0, 0, 1311, 701));
+        frame->setStyleSheet(QString::fromUtf8("background-image: url(:/Recursos/ppg.jpg);"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         pushButton = new QPushButton(frame);

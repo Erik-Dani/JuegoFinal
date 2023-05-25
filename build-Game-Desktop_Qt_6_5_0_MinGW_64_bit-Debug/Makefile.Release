@@ -138,8 +138,9 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_Imagenes.cpp
 release/qrc_Imagenes.cpp: ../Game/Imagenes.qrc \
 		C:/Qt/6.5.0/mingw_64/bin/rcc.exe \
-		../Game/play.png \
-		../Game/Recursos/universe.gif
+		../Game/Recursos/Deteck.jpg \
+		../Game/Recursos/Planet_T.jpg \
+		../Game/Recursos/ppg.jpg
 	C:\Qt\6.5.0\mingw_64\bin\rcc.exe -name Imagenes --no-zstd ..\Game\Imagenes.qrc -o release\qrc_Imagenes.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -333,6 +334,8 @@ release/moc_game.cpp: ../Game/game.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.5.0/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QProgressBar \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qprogressbar.h \
 		../Game/nave.h \
 		../Game/proyectil.h \
 		../Game/gamebase.h \
@@ -505,6 +508,37 @@ release/moc_interfaz.cpp: ../Game/interfaz.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qmainwindow.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qtabwidget.h \
+		../Game/game.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QDebug \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpen.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QVector \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qvector.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/QPixmap \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/QKeyEvent \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsItem \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpainterpath.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsView \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicsview.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpainter.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qtextoption.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qscrollarea.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QProgressBar \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qprogressbar.h \
+		../Game/nave.h \
+		../Game/proyectil.h \
+		../Game/gamebase.h \
+		../Game/portal.h \
+		../Game/punch.h \
+		../Game/lanzador.h \
 		release/moc_predefs.h \
 		C:/Qt/6.5.0/mingw_64/bin/moc.exe
 	C:\Qt\6.5.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Crist/OneDrive/Escritorio/JuegoFinal/build-Game-Desktop_Qt_6_5_0_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.5.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Crist/OneDrive/Escritorio/JuegoFinal/Game -IC:/Qt/6.5.0/mingw_64/include -IC:/Qt/6.5.0/mingw_64/include/QtWidgets -IC:/Qt/6.5.0/mingw_64/include/QtGui -IC:/Qt/6.5.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Game\interfaz.h -o release\moc_interfaz.cpp
@@ -872,7 +906,65 @@ release/interfaz.o: ../Game/interfaz.cpp ../Game/interfaz.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qmainwindow.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qtabwidget.h \
-		ui_interfaz.h
+		../Game/game.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QDebug \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicsscene.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpen.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QTimer \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qtimer.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QVector \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qvector.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/QPixmap \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/QKeyEvent \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsItem \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpainterpath.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QGraphicsView \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qgraphicsview.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpainter.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qtextoption.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qscrollarea.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QProgressBar \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qprogressbar.h \
+		../Game/nave.h \
+		../Game/proyectil.h \
+		../Game/gamebase.h \
+		../Game/portal.h \
+		../Game/punch.h \
+		../Game/lanzador.h \
+		ui_interfaz.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/QVariant \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QApplication \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qguiapplication.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qinputmethod.h \
+		C:/Qt/6.5.0/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QFrame \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\interfaz.o ..\Game\interfaz.cpp
 
 release/jugador.o: ../Game/jugador.cpp ../Game/jugador.h \
@@ -1310,12 +1402,17 @@ release/main.o: ../Game/main.cpp ../Game/game.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.5.0/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QProgressBar \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qprogressbar.h \
 		../Game/nave.h \
 		../Game/proyectil.h \
 		../Game/gamebase.h \
 		../Game/portal.h \
 		../Game/punch.h \
 		../Game/lanzador.h \
+		../Game/interfaz.h \
+		../Game/jugador.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QWidget \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qapplication.h \
 		C:/Qt/6.5.0/mingw_64/include/QtCore/qcoreapplication.h \
@@ -1522,6 +1619,8 @@ release/game.o: ../Game/game.cpp ../Game/game.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.5.0/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QProgressBar \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qprogressbar.h \
 		../Game/nave.h \
 		../Game/proyectil.h \
 		../Game/gamebase.h \
@@ -1552,12 +1651,15 @@ release/game.o: ../Game/game.cpp ../Game/game.h \
 		C:/Qt/6.5.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.5.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QLCDNumber \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qlcdnumber.h \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.5.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QMenuBar \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qmenubar.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QStatusBar \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/qstatusbar.h \
 		C:/Qt/6.5.0/mingw_64/include/QtWidgets/QWidget
