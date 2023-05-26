@@ -95,6 +95,15 @@ void Game::NumRand()
     setBomba(num);
 }
 
+void Game::VortexRand()
+{
+     srand(time(0));
+    int numVG= 1+(rand()%10);
+    setVortexRandd(numVG);
+    qDebug()<<getVortexRandd()<<" <--Se asigna un nuevo vortex-...\n";
+
+}
+
 void Game::EndGame()
 {
     mundo->setBackgroundBrush(QBrush(QImage(":/Recursos/Deteck.jpg").scaled(1310,860)));
@@ -118,6 +127,7 @@ void Game::EjectMove()
 }
 void Game::CargaB()
 {
+    VortexRand();
     if(getBomba()%6==0) cargar=true;
     if(getBomba()%9==0) carga1=true;
     if(getBomba()%3==0) carga2=true;
@@ -166,6 +176,17 @@ void Game::colisiones()
             if(Destruction==100) EndGame();
             Destruk->Misiles.remove(0);
             mundo->removeItem(it);
+        }
+
+        if(it->getPosx()>=1050 && it->getPosy()>=298 && it->getPosy()<=310 && getVortexRandd()==3){
+        it->setPosx(370);
+        it->setPosy(530);
+        }else if(it->getPosx()>=853 && it->getPosy()>=669 && it->getPosy()<=682 && getVortexRandd()==5){
+        it->setPosx(384);
+        it->setPosy(165);
+        }else if(it->getPosx()>=1035 && it->getPosy()>=459 && it->getPosy()<=472 && getVortexRandd()==7){
+        it->setPosx(356);
+        it->setPosy(655);
         }
     }
     for (auto M1:P1->Galactic){
@@ -294,4 +315,21 @@ int Game::getLevel_Up() const
 void Game::setLevel_Up(int newLevel_Up)
 {
     Level_Up = newLevel_Up;
+}
+
+void Game::VortexGenerator(Proyectil *it){
+    if(it->getPosx()>=1050 && it->getPosx()<= 1850 && it->getPosy()>=298 && it->getPosy()<=310){
+        it->setPosx(370);
+        it->setPosy(530);
+        qDebug()<<"SAAAAAAAAALLLLLLLLLEEEEEEEEEEE!!!!!!!!!!!!!\n";
+    }
+}
+int Game::getVortexRandd() const
+{
+    return vortexRandd;
+}
+
+void Game::setVortexRandd(int newVortexRandd)
+{
+    vortexRandd = newVortexRandd;
 }

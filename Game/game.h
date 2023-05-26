@@ -36,7 +36,7 @@ class Game : public QMainWindow
     bool Fire=true;
     bool artilleria;
     float Point1=0;
-    int nivel=1,contBll=0, Destruction=0, Level_Up=0;
+    int nivel=1,contBll=0, Destruction=0, Level_Up=0, vortexRandd=0;
 
 public:
     Game(QWidget *parent = nullptr);
@@ -48,11 +48,15 @@ public:
     void CargarMundo();
     void CargarBomba();
     void NumRand();
+    void VortexRand();
     void timerEvent(QTimerEvent *event());
     void EndGame();
     void Vortex();
     int getLevel_Up() const;
     void setLevel_Up(int newLevel_Up);
+    void VortexGenerator(Proyectil *);
+    int getVortexRandd() const;
+    void setVortexRandd(int newVortexRandd);
 
 signals:
     void aviso(int);
